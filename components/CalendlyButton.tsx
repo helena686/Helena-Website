@@ -5,7 +5,7 @@ import { PopupModal } from 'react-calendly';
 import type { ReactNode, CSSProperties } from 'react';
 
 const CALENDLY_URL =
-  process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/helena-menadue';
+  process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/helena-coaching-/30min';
 
 interface Props {
   children: ReactNode;
