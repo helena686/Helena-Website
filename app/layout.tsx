@@ -19,9 +19,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Luminous Life — Helena Menadue · Life & Relationship Coaching for Women',
+  title: 'Helena Menadue · Life & Relationship Coaching for Women',
   description:
-    'Holistic life and relationship coaching for women ready to heal, rediscover themselves, and come home to who they really are.',
+    'Life & relationship coaching for women healing from emotional pain, self-doubt and toxic relationships.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

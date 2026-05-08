@@ -9,8 +9,8 @@ export default function Footer() {
               style={{ fontSize: 22, marginBottom: 16, display: 'flex' }}
             >
               <span style={{ color: 'var(--cream-50)' }}>
-                Luminous{' '}
-                <em style={{ fontStyle: 'italic', color: 'var(--gold-400)' }}>Life</em>
+                Helena{' '}
+                <em style={{ fontStyle: 'italic', color: 'var(--gold-400)' }}>Menadue</em>
               </span>
             </div>
             <p style={{ maxWidth: 360, lineHeight: 1.6 }}>
@@ -32,14 +32,30 @@ export default function Footer() {
             <h4>Connect</h4>
             <ul>
               <li><a href="#book">Book a call</a></li>
-              <li><a href="mailto:hello@luminouslife.co">hello@luminouslife.co</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">Substack</a></li>
+              <li><a href="mailto:helena@beautylish.com.au">helena@beautylish.com.au</a></li>
+              <li>
+                <a
+                  href="https://www.instagram.com/helenawellnesscoach/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/helena.selfworthcoach"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
+              </li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Luminous Life · Helena Menadue. Made with care.</span>
+          <span>© 2026 Helena Menadue. Made with care.</span>
           <span>Privacy · Terms</span>
         </div>
       </div>

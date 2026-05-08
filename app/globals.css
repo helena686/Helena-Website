@@ -98,7 +98,9 @@ button {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  /* Only horizontal padding — vertical padding is controlled per-section via Tailwind */
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 .section {
@@ -133,10 +135,15 @@ button {
 
 .text-center { text-align: center; }
 
-/* Angled section dividers */
+/* Angled section dividers — desktop only */
 .angled-top    { clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%); }
 .angled-bottom { clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%); }
 .angled-both   { clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%); }
+
+/* On mobile the diagonal clip always cuts into content — disable it completely */
+@media (max-width: 767px) {
+  .angled-top, .angled-bottom, .angled-both { clip-path: none; }
+}
 
 /* ============================================
    BUTTONS
@@ -209,9 +216,10 @@ button {
 
 .nav-logo {
   font-family: var(--font-display);
-  font-size: 18px;
+  /* font-size controlled by Tailwind (text-[15px] md:text-[18px]) */
   font-weight: 500;
   letter-spacing: -0.01em;
+  white-space: nowrap;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -321,7 +329,7 @@ button {
 @media (max-width: 760px) {
   .pillars { grid-template-columns: 1fr; }
   .section { padding: 64px 0; }
-  .container { padding: 0 20px; }
+  .container { padding-left: 20px; padding-right: 20px; }
 }
 
 /* ============================================
@@ -431,9 +439,9 @@ button {
   transition: transform 0.3s ease;
 }
 .gallery-item:hover { transform: scale(1.02); }
-.gallery-item--rose { background: linear-gradient(135deg, var(--rose-300), var(--rose-500)); }
-.gallery-item--gold { background: linear-gradient(135deg, var(--gold-400), var(--gold-600)); }
-.gallery-item--plum { background: linear-gradient(135deg, var(--plum-600), var(--plum-900)); }
+.gallery-item--rose { background: linear-gradient(135deg, var(--rose-300), var(--rose-500)); } /* unchanged */
+.gallery-item--gold { background: #C9B79C; }  /* soft beige — needs dark text */
+.gallery-item--plum { background: #9CAF94; }  /* sage green — keeps white text */
 
 .gallery-text-card {
   position: absolute;
@@ -793,7 +801,7 @@ em {
 }
 
 @media (max-width: 760px) {
-  .principle-grid { grid-template-columns: repeat(2, 1fr); }
+  .principle-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================

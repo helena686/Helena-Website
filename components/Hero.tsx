@@ -50,9 +50,8 @@ export default function Hero() {
           </h1>
 
           <p className="hero-sub">
-            Coaching for women rebuilding themselves after toxic and narcissistic
-            relationships. I work at the root. The trauma, the patterns, the
-            self-abandonment. So this is the last time.
+            Life &amp; relationship coaching for women healing from emotional pain,
+            self-doubt and toxic relationships.
           </p>
 
           <div className="hero-cta-row">

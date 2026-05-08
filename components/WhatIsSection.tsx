@@ -6,7 +6,7 @@ const principles = [
   { icon: <SparkleIcon />, label: 'Neuroscience' },
   { icon: <SunIcon />, label: 'Nervous System' },
   { icon: <LeafIcon />, label: 'Energy Healing' },
-  { icon: <BloomIcon />, label: 'Embodiment' },
+  { icon: <BloomIcon />, label: 'Quantum Healing' },
 ];
 
 export default function WhatIsSection() {
@@ -28,16 +28,17 @@ export default function WhatIsSection() {
         }}
       />
 
-      {/* pt-10/pb-10 on mobile (40px), md:pt-14/pb-14 on desktop (56px) — keeps angled clip clear */}
+      {/* relative z-10 renders content above the blob layers */}
       <div
-        className="container text-center font-light pt-10 pb-10 md:pt-14 md:pb-14"
-        style={{ position: 'relative', zIndex: 1 }}
+        className="container text-center font-light relative z-10 pt-20 pb-24 md:pt-14 md:pb-14"
       >
         <div className="section-eyebrow" style={{ color: 'var(--gold-400)' }}>
           The Approach
         </div>
         <h2 className="section-title">
-          I don&apos;t just talk. <em>I rewire.</em>
+          I don&apos;t just talk about the pain.
+          <br />
+          <em>I gently rewire the patterns beneath it.</em>
         </h2>
 
         {/* text-base on mobile → text-[17px] on md+ */}
@@ -45,9 +46,8 @@ export default function WhatIsSection() {
           className="text-base md:text-[17px] font-medium w-full md:max-w-[680px] mx-auto mb-4"
           style={{ color: 'rgba(251,246,238,0.85)' }}
         >
-          Talk therapy gives you insight. But insight doesn&apos;t stop you from going back. The
-          patterns aren&apos;t in your thinking mind. They&apos;re in your nervous system.
-          That&apos;s where I work.
+          Insight alone doesn&apos;t stop you from going back. The patterns aren&apos;t in your
+          thinking mind. They&apos;re in your nervous system. That&apos;s where I work.
         </p>
 
         {/* text-sm on mobile → text-[15px] on md+ */}
@@ -68,13 +68,21 @@ export default function WhatIsSection() {
           ))}
         </div>
 
-        <p
-          className="text-sm md:text-[15px] w-full md:max-w-[600px] mx-auto mt-8 md:mt-10 mb-7"
-          style={{ color: 'rgba(251,246,238,0.75)' }}
-        >
-          Five modalities, one woman holding the space, working with what you actually need. Not a
-          programme. A practice.
-        </p>
+        <div className="w-full md:max-w-[600px] mx-auto mt-8 md:mt-10 mb-7 flex flex-col gap-2 text-center">
+          {/* Line 1 — intro, bright cream, semibold */}
+          <p className="text-base font-semibold text-white">
+            The work moves through five places.
+          </p>
+          {/* Line 2 — five pillars separated by mid-dots, readable */}
+          <p className="text-sm md:text-[15px]" style={{ color: 'rgba(251,246,238,0.88)' }}>
+            Clarity &middot; Understanding the patterns &middot; Inner child &amp; subconscious
+            healing &middot; Rebuilding self-trust &middot; Future self integration
+          </p>
+          {/* Line 3 — closing, italic and dimmed */}
+          <p className="text-sm italic" style={{ color: 'rgba(251,246,238,0.45)' }}>
+            Not a programme. A practice.
+          </p>
+        </div>
 
         <CalendlyButton className="btn btn--primary btn--lg">Book a Clarity Call</CalendlyButton>
       </div>

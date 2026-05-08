@@ -32,7 +32,7 @@ const items = [
   {
     q: 'What does it cost?',
     sub: 'Investment & payment plans',
-    a: "The full program is six weeks of 1:1 work, including weekly sessions, voice-note support between calls, and the tools you'll keep using long after we're done. Pricing is shared on the discovery call so you can ask about payment plans and decide what's right for you, with no pressure to commit on the spot.",
+    a: "There's no one-size-fits-all price for this work — every woman's path is different. We'll talk through the options on the discovery call and find what fits where you are.",
   },
 ];
 

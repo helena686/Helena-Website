@@ -3,9 +3,9 @@ import CalendlyButton from './CalendlyButton';
 export default function Nav() {
   return (
     <nav className="nav" aria-label="Primary">
-      <a href="#top" className="nav-logo">
+      <a href="#top" className="nav-logo whitespace-nowrap text-[15px] md:text-[18px]">
         <span>
-          Luminous <em style={{ fontStyle: 'italic', color: 'var(--gold-400)' }}>Life</em>
+          Helena <em style={{ fontStyle: 'italic', color: 'var(--gold-400)' }}>Menadue</em>
         </span>
       </a>
       <ul className="nav-links">

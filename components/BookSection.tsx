@@ -16,7 +16,7 @@ export default function BookSection() {
         </h2>
 
         {/* mb-8 on mobile (32px), mb-10 on desktop (40px) */}
-        <p className="section-lead mb-8 md:mb-10">
+        <p className="section-lead mb-14 md:mb-12">
           A free, 30 minutes call. Just you and me. We&apos;ll talk through what&apos;s been
           weighing on you, what you want different, and whether this work is the right fit.
           No pitch. No pressure. Just a real conversation.
@@ -27,7 +27,7 @@ export default function BookSection() {
           Book a Free Call with Helena <ArrowRightIcon />
         </CalendlyButton>
 
-        <p className="form-note mt-5">
+        <p className="form-note mt-8">
           Free · 30 minutes · No obligation
         </p>
       </div>
