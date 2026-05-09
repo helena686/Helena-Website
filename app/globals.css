@@ -828,9 +828,8 @@ em {
   position: absolute;
   inset: 0;
   border-radius: var(--radius-lg);
-  background: url('/assets/helena-about.jpg') center center / cover no-repeat;
   box-shadow: var(--shadow-lg);
-  overflow: hidden;
+  overflow: hidden; /* clips next/image to the rounded corners */
 }
 .about-decor--2 {
   position: absolute;
@@ -937,10 +936,11 @@ em {
 /* Portrait block — replaces the old abs-positioned .hero-portrait */
 /* Mobile: 260×340 with arch top; md+: 460×600, larger arch */
 .hero-portrait-block {
+  position: relative;       /* required for Next.js Image fill */
+  overflow: hidden;         /* clip image to border-radius */
   width: 260px;
   height: 340px;
   border-radius: 130px 130px 12px 12px;
-  background: url('/assets/helena-hero.jpg') center top / cover no-repeat;
   box-shadow: var(--shadow-lg);
   flex-shrink: 0;
 }

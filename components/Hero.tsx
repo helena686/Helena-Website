@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import CalendlyButton from './CalendlyButton';
 import { ArrowRightIcon, ArrowDownIcon } from './Icons';
 
@@ -29,7 +30,16 @@ export default function Hero() {
           md:order-2 moves it to the right slot on desktop without touching DOM order.
         */}
         <div className="flex justify-center md:justify-end md:order-2 md:flex-shrink-0">
-          <div className="hero-portrait-block" />
+          <div className="hero-portrait-block">
+            <Image
+              src="/assets/helena-hero.png"
+              alt="Helena Menadue, life and relationship coach"
+              fill
+              priority
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 260px, 460px"
+            />
+          </div>
         </div>
 
         {/*

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import CalendlyButton from './CalendlyButton';
 import { ArrowRightIcon, QuoteIcon } from './Icons';
 
@@ -6,7 +7,15 @@ export default function About() {
     <section id="about" className="section section--lg about-section">
       <div className="container about-grid">
         <div className="about-portrait-wrap">
-          <div className="about-portrait" />
+          <div className="about-portrait">
+            <Image
+              src="/assets/helena-about.jpg"
+              alt="Helena Menadue"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 900px) 400px, 460px"
+            />
+          </div>
           <div className="about-decor--2" />
           <div className="about-quote">
             <QuoteIcon />
