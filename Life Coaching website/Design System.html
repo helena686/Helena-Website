@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luminous Life — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --plum-900: #1f1322; --plum-800: #2c1a32; --plum-700: #3d2645; --plum-600: #5a3866;
+  --cream-50: #fbf6ee; --cream-100: #f5ecde; --cream-200: #ece0cc;
+  --ink-900: #2a1d2e; --ink-700: #4a3a4f; --ink-500: #7a6a7e;
+  --rose-300: #e8b4a8; --rose-500: #c97863;
+  --gold-400: #e8b86a; --gold-500: #d4a04a; --gold-600: #b8842f;
+  --sage-400: #9bb39a; --sage-bg: #e3ebe2;
+  --dusk-bg: #f3dcd6; --dusk-fg: #b86b5a;
+  --surface: #ffffff; --border: #e8ddca;
+  --accent: var(--gold-500); --accent-deep: var(--gold-600); --on-accent: #1f1322;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --radius-sm: 8px; --radius-md: 16px; --radius-lg: 24px; --radius-xl: 32px; --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(31,19,34,.06), 0 1px 3px rgba(31,19,34,.04);
+  --shadow-md: 0 4px 12px rgba(31,19,34,.08), 0 2px 4px rgba(31,19,34,.04);
+  --shadow-lg: 0 12px 32px rgba(31,19,34,.12), 0 4px 8px rgba(31,19,34,.06);
+  --shadow-glow: 0 0 0 1px rgba(212,160,74,.3), 0 12px 40px rgba(212,160,74,.2);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--cream-50);color:var(--ink-900);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;display:flex}
+
+/* ── SIDEBAR ── */
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:216px;background:var(--plum-900);padding:28px 0;overflow-y:auto;z-index:100;flex-shrink:0}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(232,184,106,.2);border-radius:2px}
+.sb-brand{padding:0 22px 22px;border-bottom:1px solid rgba(251,246,238,.08);margin-bottom:16px}
+.sb-brand-name{font-family:var(--font-display);font-size:17px;font-weight:500;color:var(--cream-50)}
+.sb-brand-name em{font-style:italic;color:var(--gold-400)}
+.sb-brand-sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,246,238,.35);margin-top:3px}
+.sb-group{font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:rgba(251,246,238,.3);padding:14px 22px 5px;font-weight:600}
+.sidebar a{display:block;padding:6px 22px;font-size:13px;color:rgba(251,246,238,.6);text-decoration:none;transition:color .15s,background .15s;border-left:2px solid transparent}
+.sidebar a:hover{color:var(--gold-400);background:rgba(232,184,106,.07);border-left-color:rgba(232,184,106,.3)}
+
+/* ── MAIN ── */
+.main{margin-left:216px;flex:1;padding:52px 60px 120px;max-width:1060px}
+.page-header{margin-bottom:64px;padding-bottom:40px;border-bottom:1px solid var(--border)}
+.page-header h1{font-family:var(--font-display);font-size:36px;font-weight:500;letter-spacing:-.02em;color:var(--ink-900);margin-bottom:6px}
+.page-header h1 em{font-style:italic;color:var(--gold-500)}
+.page-header p{font-size:15px;color:var(--ink-500);max-width:480px}
+
+/* ── SECTION ── */
+.ds-sec{padding-bottom:68px;border-bottom:1px solid var(--border);margin-bottom:68px}
+.ds-sec:last-child{border-bottom:none;margin-bottom:0}
+.ds-sec-title{font-family:var(--font-display);font-size:26px;font-weight:500;letter-spacing:-.02em;color:var(--ink-900);margin-bottom:6px}
+.ds-sec-desc{font-size:14px;color:var(--ink-500);margin-bottom:32px;max-width:580px;line-height:1.6}
+.ds-label{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-500);margin-bottom:12px;margin-top:28px}
+.ds-label:first-child{margin-top:0}
+
+/* ── COLOR SWATCHES ── */
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:10px}
+.swatch{border-radius:var(--radius-md);overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+.swatch-block{height:64px}
+.swatch-info{padding:8px 10px;background:#fff}
+.swatch-name{font-size:11.5px;font-weight:600;color:var(--ink-900)}
+.swatch-hex{font-size:10.5px;color:var(--ink-500);font-family:'Courier New',monospace}
+
+/* ── TYPE SCALE ── */
+.type-table{display:flex;flex-direction:column;gap:0}
+.type-row{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:start;padding:22px 0;border-bottom:1px solid var(--border)}
+.type-row:last-child{border-bottom:none}
+.type-meta-name{font-size:12px;font-weight:700;color:var(--ink-900);margin-bottom:3px}
+.type-meta-spec{font-size:11px;color:var(--ink-500);font-family:'Courier New',monospace;line-height:1.7}
+
+/* ── RADIUS ── */
+.radius-row{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end}
+.radius-item{text-align:center}
+.radius-box{background:var(--cream-100);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.token{font-family:'Courier New',monospace;font-size:11px;color:var(--ink-500);display:block;margin-top:2px}
+.token-val{font-family:'Courier New',monospace;font-size:11px;color:var(--ink-900);font-weight:700}
+
+/* ── SHADOWS ── */
+.shadow-row{display:flex;flex-wrap:wrap;gap:24px}
+.shadow-item{display:flex;flex-direction:column;align-items:center;gap:12px}
+.shadow-box{background:#fff;border-radius:var(--radius-md);width:130px;height:80px}
+
+/* ── ICONS ── */
+.icon-grid{display:flex;flex-wrap:wrap;gap:10px}
+.icon-chip{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);width:88px;cursor:default}
+.icon-chip span{font-size:10.5px;color:var(--ink-500);text-align:center}
+
+/* ── PREVIEW FRAME ── */
+.preview{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;margin-bottom:12px}
+.preview+.preview,.preview+.preview-dark,.preview-dark+.preview{margin-top:14px}
+.preview-dark{background:var(--plum-900);border:1px solid rgba(232,184,106,.12);border-radius:var(--radius-lg);padding:36px;margin-bottom:12px}
+.preview-cream{background:var(--cream-100);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:12px}
+
+/* ── BUTTONS (from site) ── */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:var(--radius-pill);font-family:var(--font-body);font-weight:500;font-size:15px;letter-spacing:.02em;border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn--primary{background:var(--accent);color:var(--on-accent);box-shadow:var(--shadow-md)}
+.btn--primary:hover{background:var(--accent-deep);transform:translateY(-1px);box-shadow:var(--shadow-lg);color:#fff}
+.btn--dark{background:var(--plum-900);color:var(--gold-400)}
+.btn--dark:hover{background:#000;transform:translateY(-1px)}
+.btn--ghost-light{background:transparent;color:var(--cream-50);border:1.5px solid rgba(251,246,238,.4)}
+.btn--ghost-light:hover{background:rgba(251,246,238,.08)}
+.btn--lg{padding:18px 34px;font-size:16px}
+.btn--sm{padding:9px 18px;font-size:13px}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* ── NAV (from site) ── */
+.nav-demo{background:rgba(31,19,34,.85);backdrop-filter:blur(16px);color:var(--cream-50);border-radius:var(--radius-pill);padding:10px 14px 10px 24px;display:flex;align-items:center;gap:28px;box-shadow:var(--shadow-lg);border:1px solid rgba(232,184,106,.15)}
+.nav-logo-d{font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--cream-50)}
+.nav-logo-d em{font-style:italic;color:var(--gold-400)}
+.nav-links-d{display:flex;gap:4px;list-style:none}
+.nav-links-d a{font-size:13px;padding:7px 13px;border-radius:var(--radius-pill);color:rgba(251,246,238,.75);text-decoration:none;transition:color .2s,background .2s}
+.nav-links-d a:hover{color:var(--gold-400);background:rgba(232,184,106,.08)}
+.nav-cta-d{background:var(--gold-400);color:var(--plum-900);padding:9px 18px;border-radius:var(--radius-pill);font-size:13px;font-weight:500;white-space:nowrap;text-decoration:none;flex-shrink:0}
+
+/* ── HERO BADGE ── */
+.hero-badge-d{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border:1px solid rgba(212,160,74,.3);border-radius:var(--radius-pill);font-size:13px;letter-spacing:.04em;color:var(--ink-700)}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-500);box-shadow:0 0 8px var(--gold-400);animation:pulse 2.4s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── EYEBROW ── */
+.eyebrow-d{font-family:var(--font-body);font-size:12.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep)}
+.eyebrow-d.on-dark{color:var(--gold-400)}
+
+/* ── PILLAR CARD ── */
+.pillar-d{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 24px;text-align:center;transition:transform .3s,box-shadow .3s}
+.pillar-d:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.pillar-icon-d{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold-400),var(--rose-300));display:flex;align-items:center;justify-content:center;margin:0 auto 18px;color:var(--plum-900)}
+.pillar-d h3{font-family:var(--font-display);font-size:21px;font-weight:500;letter-spacing:-.02em;margin-bottom:8px;color:var(--ink-900)}
+.pillar-d p{font-size:14px;color:var(--ink-700);line-height:1.55}
+
+/* ── CALLOUT ── */
+.callout-d{background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--plum-900);border-radius:var(--radius-lg);padding:26px 32px;font-size:17px;font-weight:500;box-shadow:var(--shadow-md)}
+
+/* ── COMPARE ── */
+.compare-d{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.compare-col-d{background:var(--surface);border-radius:var(--radius-lg);padding:24px;border:2px solid}
+.compare-col-d.gain{border-color:var(--sage-400)}
+.compare-col-d.remove{border-color:var(--dusk-fg)}
+.compare-header-d{text-align:center;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.compare-badge-d{width:40px;height:40px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}
+.compare-badge-d.gain{background:var(--sage-bg);color:#4a7048}
+.compare-badge-d.remove{background:var(--dusk-bg);color:var(--dusk-fg)}
+.compare-col-d h3{font-family:var(--font-display);font-size:18px;font-weight:500;letter-spacing:-.02em;margin-bottom:2px;color:var(--ink-900)}
+.compare-col-d header p{color:var(--ink-500);font-size:12px}
+.compare-item-d{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.04)}
+.compare-item-d:last-child{border-bottom:none;padding-bottom:0}
+.ci-icon{flex-shrink:0;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ci-icon.gain{background:var(--sage-bg);color:#4a7048}
+.ci-icon.remove{background:var(--dusk-bg);color:var(--dusk-fg)}
+.compare-item-d h4{font-size:13px;font-weight:600;margin-bottom:2px;color:var(--ink-900)}
+.compare-item-d p{font-size:12px;color:var(--ink-700);line-height:1.45}
+
+/* ── FAQ ── */
+.faq-item-d{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden}
+.faq-item-d+.faq-item-d{margin-top:10px}
+.faq-item-d.open{border-color:var(--gold-500)}
+.faq-q-d{width:100%;display:flex;align-items:center;gap:14px;padding:18px 20px;text-align:left;font-family:var(--font-body);font-size:14.5px;color:var(--ink-900);background:none;border:none;cursor:pointer}
+.faq-num-d{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--cream-100);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--accent-deep)}
+.faq-item-d.open .faq-num-d{background:var(--gold-400);border-color:var(--gold-500);color:var(--plum-900)}
+.faq-q-txt strong{display:block;font-weight:600;margin-bottom:2px}
+.faq-q-txt small{font-size:12px;color:var(--ink-500)}
+.faq-a-d{padding:0 20px 18px 64px;font-size:14px;color:var(--ink-700);line-height:1.6}
+
+/* ── GALLERY ── */
+.gallery-d{display:flex;flex-wrap:wrap;gap:12px}
+.gitem{width:130px;aspect-ratio:3/4;border-radius:var(--radius-md);overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s}
+.gitem:hover{transform:scale(1.03)}
+.gitem span{font-family:var(--font-display);font-style:italic;font-size:17px;color:rgba(255,255,255,.95);text-shadow:0 2px 8px rgba(0,0,0,.2)}
+.g-rose{background:linear-gradient(135deg,var(--rose-300),var(--rose-500))}
+.g-gold{background:linear-gradient(135deg,var(--gold-400),var(--gold-600))}
+.g-plum{background:linear-gradient(135deg,var(--plum-600),var(--plum-900))}
+
+/* ── QUOTE CARD ── */
+.quote-card-d{background:var(--surface);padding:22px 26px;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);max-width:280px;border:1px solid var(--border);display:inline-block}
+.quote-card-d p{font-family:var(--font-display);font-size:15px;font-style:italic;color:var(--ink-900);line-height:1.4;margin-top:8px}
+
+/* ── CREDENTIALS ── */
+.creds-d{list-style:none;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 0;display:flex;flex-direction:column;gap:10px}
+.creds-d li{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--ink-900)}
+.cred-dot-d{width:6px;height:6px;border-radius:50%;background:var(--gold-500);flex-shrink:0}
+
+/* ── PROMISE LIST ── */
+.promise-d{list-style:none;display:flex;flex-direction:column;gap:10px}
+.promise-d li{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--ink-700)}
+.promise-icon-d{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--gold-400),var(--rose-300));color:var(--plum-900);font-size:13px;display:flex;align-items:center;justify-content:center}
+
+/* ── PRINCIPLE (dark) ── */
+.principle-d{background:rgba(255,255,255,.04);border:1px solid rgba(232,184,106,.25);border-radius:var(--radius-md);padding:20px 12px;text-align:center;transition:background .2s,border-color .2s,transform .2s;width:100px}
+.principle-d:hover{background:rgba(232,184,106,.1);border-color:var(--gold-400);transform:translateY(-3px)}
+.principle-icon-d{color:var(--gold-400);margin-bottom:10px;display:flex;justify-content:center}
+.principle-label-d{font-size:11.5px;font-weight:500;letter-spacing:.06em;color:var(--cream-50)}
+
+/* ── FORM ── */
+.field-d{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.field-d label{font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--ink-700)}
+.field-d input,.field-d textarea{font-family:var(--font-body);font-size:15px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--cream-50);color:var(--ink-900);transition:border-color .2s,box-shadow .2s;resize:vertical;outline:none}
+.field-d input:focus,.field-d textarea:focus{border-color:var(--gold-500);box-shadow:0 0 0 3px rgba(212,160,74,.15)}
+
+/* ── CONTACT CARD (gradient border) ── */
+.contact-card-d{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:36px;box-shadow:var(--shadow-lg);position:relative}
+.contact-card-d::before{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(135deg,var(--gold-400),transparent 50%,var(--rose-300));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+
+/* ── HERO TITLE TREATMENT ── */
+.hero-title-d{font-family:var(--font-display);font-weight:400;letter-spacing:-.025em;line-height:1.05;color:var(--ink-900)}
+.hero-title-d em{font-style:italic;background:linear-gradient(120deg,var(--gold-600),var(--rose-500),var(--gold-500));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-title-d{font-family:var(--font-display);font-weight:500;letter-spacing:-.02em;line-height:1.1;color:var(--ink-900)}
+.sec-title-d em{font-style:italic;background:linear-gradient(120deg,var(--gold-600),var(--rose-500));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ── UTILITY ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+code{font-family:'Courier New',monospace;font-size:11.5px;background:var(--cream-100);padding:2px 6px;border-radius:4px;color:var(--ink-700)}
+.code-block{background:var(--plum-900);border-radius:var(--radius-md);padding:16px 20px;font-family:'Courier New',monospace;font-size:12px;color:rgba(232,184,106,.8);line-height:1.8;overflow-x:auto}
+</style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-brand-name">Luminous <em>Life</em></div>
+    <div class="sb-brand-sub">Design System</div>
+  </div>
+  <nav>
+    <div class="sb-group">Foundation</div>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing &amp; Radii</a>
+    <a href="#shadows">Shadows</a>
+    <a href="#icons">Icons</a>
+    <div class="sb-group">Elements</div>
+    <a href="#buttons">Buttons</a>
+    <a href="#badges">Badges &amp; Pills</a>
+    <a href="#forms">Form Fields</a>
+    <div class="sb-group">Components</div>
+    <a href="#nav">Navigation</a>
+    <a href="#sections">Section Headers</a>
+    <a href="#cards">Cards</a>
+    <a href="#lists">Lists</a>
+    <a href="#faq">FAQ Accordion</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#dark">Dark Surface</a>
+  </nav>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <div class="page-header">
+    <h1>Luminous <em>Life</em> — Design System</h1>
+    <p>Every token, component, and pattern used across the Helena Menadue coaching website. All values are live CSS custom properties on <code>:root</code>.</p>
+  </div>
+
+  <!-- ══ COLORS ══ -->
+  <section id="colors" class="ds-sec">
+    <h2 class="ds-sec-title">Colors</h2>
+    <p class="ds-sec-desc">Warm, feminine, grounded. A plum-900 deep dark anchors the palette; gold and rose provide warmth and luminosity. Ink sits on cream; never pure black on pure white.</p>
+
+    <div class="ds-label">Plum Scale — Dark surfaces, text, footer</div>
+    <div class="swatch-grid" style="margin-bottom:20px">
+      <div class="swatch"><div class="swatch-block" style="background:#1f1322"></div><div class="swatch-info"><div class="swatch-name">plum-900</div><div class="swatch-hex">#1f1322</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#2c1a32"></div><div class="swatch-info"><div class="swatch-name">plum-800</div><div class="swatch-hex">#2c1a32</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#3d2645"></div><div class="swatch-info"><div class="swatch-name">plum-700</div><div class="swatch-hex">#3d2645</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#5a3866"></div><div class="swatch-info"><div class="swatch-name">plum-600</div><div class="swatch-hex">#5a3866</div></div></div>
+    </div>
+
+    <div class="ds-label">Cream &amp; Ink — Background, body text</div>
+    <div class="swatch-grid" style="margin-bottom:20px">
+      <div class="swatch"><div class="swatch-block" style="background:#fbf6ee;border-bottom:1px solid #e8ddca"></div><div class="swatch-info"><div class="swatch-name">cream-50 ★</div><div class="swatch-hex">#fbf6ee — bg</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#f5ecde"></div><div class="swatch-info"><div class="swatch-name">cream-100</div><div class="swatch-hex">#f5ecde</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#ece0cc"></div><div class="swatch-info"><div class="swatch-name">cream-200</div><div class="swatch-hex">#ece0cc</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#2a1d2e"></div><div class="swatch-info"><div class="swatch-name">ink-900</div><div class="swatch-hex">#2a1d2e</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#4a3a4f"></div><div class="swatch-info"><div class="swatch-name">ink-700</div><div class="swatch-hex">#4a3a4f</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#7a6a7e"></div><div class="swatch-info"><div class="swatch-name">ink-500</div><div class="swatch-hex">#7a6a7e</div></div></div>
+    </div>
+
+    <div class="ds-label">Gold &amp; Rose — Accent, highlight, warmth</div>
+    <div class="swatch-grid" style="margin-bottom:20px">
+      <div class="swatch"><div class="swatch-block" style="background:#e8b86a"></div><div class="swatch-info"><div class="swatch-name">gold-400</div><div class="swatch-hex">#e8b86a</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#d4a04a"></div><div class="swatch-info"><div class="swatch-name">gold-500 ★</div><div class="swatch-hex">#d4a04a — accent</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#b8842f"></div><div class="swatch-info"><div class="swatch-name">gold-600</div><div class="swatch-hex">#b8842f</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#e8b4a8"></div><div class="swatch-info"><div class="swatch-name">rose-300</div><div class="swatch-hex">#e8b4a8</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#c97863"></div><div class="swatch-info"><div class="swatch-name">rose-500</div><div class="swatch-hex">#c97863</div></div></div>
+    </div>
+
+    <div class="ds-label">Sage &amp; Dusk — Semantic: Gain / Release</div>
+    <div class="swatch-grid" style="margin-bottom:28px">
+      <div class="swatch"><div class="swatch-block" style="background:#9bb39a"></div><div class="swatch-info"><div class="swatch-name">sage-400</div><div class="swatch-hex">#9bb39a</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#e3ebe2;border-bottom:1px solid #ccc"></div><div class="swatch-info"><div class="swatch-name">sage-bg</div><div class="swatch-hex">#e3ebe2</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#f3dcd6;border-bottom:1px solid #ccc"></div><div class="swatch-info"><div class="swatch-name">dusk-bg</div><div class="swatch-hex">#f3dcd6</div></div></div>
+      <div class="swatch"><div class="swatch-block" style="background:#b86b5a"></div><div class="swatch-info"><div class="swatch-name">dusk-fg</div><div class="swatch-hex">#b86b5a</div></div></div>
+    </div>
+
+    <div class="ds-label">Accent Presets — Tweakable site-wide via Tweaks panel</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <div style="background:#d4a04a;padding:12px 22px;border-radius:var(--radius-md);font-size:13px;font-weight:600;color:#1f1322">Gold ★ default</div>
+      <div style="background:#c97863;padding:12px 22px;border-radius:var(--radius-md);font-size:13px;font-weight:600;color:#fff">Rose</div>
+      <div style="background:#7a9577;padding:12px 22px;border-radius:var(--radius-md);font-size:13px;font-weight:600;color:#fff">Sage</div>
+      <div style="background:#8e5a7e;padding:12px 22px;border-radius:var(--radius-md);font-size:13px;font-weight:600;color:#fff">Plum</div>
+    </div>
+  </section>
+
+  <!-- ══ TYPOGRAPHY ══ -->
+  <section id="typography" class="ds-sec">
+    <h2 class="ds-sec-title">Typography</h2>
+    <p class="ds-sec-desc"><strong>Fraunces</strong> — optical-size-aware display serif, weight 300–500. Used for all headings, the logo, quote cards, and italic emphasis moments.<br><strong>Outfit</strong> — geometric sans, weight 300–600. Used for all body copy, UI labels, eyebrows, and buttons.</p>
+
+    <div class="type-table">
+      <div class="type-row">
+        <div><div class="type-meta-name">Hero Title</div><div class="type-meta-spec">Fraunces 400<br>clamp(40px → 84px)<br>ls −.025em · lh 1.05</div></div>
+        <div class="hero-title-d" style="font-size:52px">Heal what<br><em>broke you.</em></div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-meta-name">Section Title</div><div class="type-meta-spec">Fraunces 500<br>clamp(36px → 56px)<br>ls −.02em · lh 1.05</div></div>
+        <div class="sec-title-d" style="font-size:36px">You've been telling yourself<br><em>it wasn't that bad.</em></div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-meta-name">H3 — Card</div><div class="type-meta-spec">Fraunces 500<br>22px · ls −.02em</div></div>
+        <div style="font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:-.02em;color:var(--ink-900)">Heal the Root</div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-meta-name">Section Eyebrow</div><div class="type-meta-spec">Outfit 500<br>13px · ls .18em<br>UPPERCASE · accent-deep</div></div>
+        <div class="eyebrow-d">If You're Here, You Already Know</div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-meta-name">Section Lead</div><div class="type-meta-spec">Outfit 400<br>18px · ink-700<br>lh 1.6</div></div>
+        <div style="font-size:18px;color:var(--ink-700);max-width:460px;line-height:1.6">To everyone else, you're the woman who has it together. But in the quiet moments, you know how much of you didn't make it out.</div>
+      </div>
+      <div class="type-row">
+        <div><div class="type-meta-name">Body</div><div class="type-meta-spec">Outfit 400<br>17px · ink-900<br>lh 1.6</div></div>
+        <div style="font-size:17px;color:var(--ink-900);max-width:460px;line-height:1.6">Sessions are 1:1 and online. Some weeks we go to the root with hypnotherapy. Some weeks we regulate the body before we touch the mind. There's no script. There's a method.</div>
+      </div>
+      <div class="type-row" style="border-bottom:none">
+        <div><div class="type-meta-name">Small / Meta</div><div class="type-meta-spec">Outfit 400<br>13px · ink-500<br>ls .04em</div></div>
+        <div style="font-size:13px;color:var(--ink-500);letter-spacing:.04em">Free · 30 minutes · No obligation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SPACING & RADII ══ -->
+  <section id="spacing" class="ds-sec">
+    <h2 class="ds-sec-title">Spacing &amp; Radii</h2>
+    <p class="ds-sec-desc">Five border-radius steps from inputs to pill nav. Section vertical padding is generous — 96px standard, 128px for large content sections.</p>
+
+    <div class="ds-label">Border Radii</div>
+    <div class="radius-row">
+      <div class="radius-item"><div class="radius-box" style="width:52px;height:52px;border-radius:8px"></div><span class="token">--radius-sm</span><span class="token-val">8px</span></div>
+      <div class="radius-item"><div class="radius-box" style="width:68px;height:68px;border-radius:16px"></div><span class="token">--radius-md</span><span class="token-val">16px</span></div>
+      <div class="radius-item"><div class="radius-box" style="width:84px;height:84px;border-radius:24px"></div><span class="token">--radius-lg</span><span class="token-val">24px</span></div>
+      <div class="radius-item"><div class="radius-box" style="width:100px;height:100px;border-radius:32px"></div><span class="token">--radius-xl</span><span class="token-val">32px</span></div>
+      <div class="radius-item"><div class="radius-box" style="width:120px;height:42px;border-radius:999px"></div><span class="token">--radius-pill</span><span class="token-val">999px</span></div>
+    </div>
+
+    <div class="ds-label" style="margin-top:32px">Section Spacing</div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <div style="padding:10px 16px;background:var(--cream-100);border:1px solid var(--border);border-radius:var(--radius-sm)"><code>.section</code> <span style="font-size:13px;font-weight:600;color:var(--ink-900);margin-left:8px">96px vertical</span></div>
+      <div style="padding:10px 16px;background:var(--cream-100);border:1px solid var(--border);border-radius:var(--radius-sm)"><code>.section--tight</code> <span style="font-size:13px;font-weight:600;color:var(--ink-900);margin-left:8px">64px vertical</span></div>
+      <div style="padding:10px 16px;background:var(--cream-100);border:1px solid var(--border);border-radius:var(--radius-sm)"><code>.section--lg</code> <span style="font-size:13px;font-weight:600;color:var(--ink-900);margin-left:8px">128px vertical</span></div>
+      <div style="padding:10px 16px;background:var(--cream-100);border:1px solid var(--border);border-radius:var(--radius-sm)"><code>.container</code> <span style="font-size:13px;font-weight:600;color:var(--ink-900);margin-left:8px">max 1200px · 32px padding</span></div>
+    </div>
+  </section>
+
+  <!-- ══ SHADOWS ══ -->
+  <section id="shadows" class="ds-sec">
+    <h2 class="ds-sec-title">Shadows</h2>
+    <p class="ds-sec-desc">All shadows use plum-900 at low opacity — a warm tint that matches the dark base. The glow variant is gold-tinted for highlighted/focused elements.</p>
+    <div class="shadow-row">
+      <div class="shadow-item"><div class="shadow-box" style="box-shadow:var(--shadow-sm)"></div><span class="token">--shadow-sm</span></div>
+      <div class="shadow-item"><div class="shadow-box" style="box-shadow:var(--shadow-md)"></div><span class="token">--shadow-md</span></div>
+      <div class="shadow-item"><div class="shadow-box" style="box-shadow:var(--shadow-lg)"></div><span class="token">--shadow-lg</span></div>
+      <div class="shadow-item"><div class="shadow-box" style="box-shadow:var(--shadow-glow)"></div><span class="token">--shadow-glow</span></div>
+    </div>
+  </section>
+
+  <!-- ══ ICONS ══ -->
+  <section id="icons" class="ds-sec">
+    <h2 class="ds-sec-title">Icons</h2>
+    <p class="ds-sec-desc">Custom SVG set. 24×24 viewBox, <code>stroke-width: 1.6</code>, <code>stroke-linecap: round</code>. Color inherits from parent — no hardcoded fill values. Used as inline React <code>&lt;Icon.Name /&gt;</code> components.</p>
+    <div class="icon-grid">
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gold-500)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg><span>Sparkle</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gold-500)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6c0-2.5-2-4.6-4.5-4.6-1.7 0-3.2 1-4 2.4-.8-1.4-2.3-2.4-4-2.4-2.5 0-4.5 2.1-4.5 4.6 0 6 8.5 11 8.5 11s8.5-5 8.5-11z"/></svg><span>Heart</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gold-500)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg><span>Compass</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gold-500)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span>Sun</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gold-500)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span>Moon</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gold-500)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 9-9h6v6c0 5-4 9-9 9z"/><path d="M4 20c4-3 6-7 8-12"/></svg><span>Leaf</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--gold-500)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5c0-3 1.5-5 3.5-5s3 1.5 2.5 3.5-2 3-3.5 2.5"/><path d="M12 14.5c0 3 1.5 5 3.5 5s3-1.5 2.5-3.5-2-3-3.5-2.5"/><path d="M12 9.5c0-3-1.5-5-3.5-5s-3 1.5-2.5 3.5 2 3 3.5 2.5"/><path d="M12 14.5c0 3-1.5 5-3.5 5s-3-1.5-2.5-3.5 2-3 3.5-2.5"/></svg><span>Bloom</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gold-500)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"/></svg><span>Check</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gold-500)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>X</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg><span>Arrow Down</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg><span>Arrow Right</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--gold-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg><span>Chevron</span></div>
+      <div class="icon-chip"><svg viewBox="0 0 24 24" width="26" height="26" fill="var(--gold-500)"><path d="M9.6 7C5.5 7 3 10.5 3 14.5V20h6v-7H6c0-2.5 1.4-4 3.6-4V7zm10 0c-4.1 0-6.6 3.5-6.6 7.5V20h6v-7h-3c0-2.5 1.4-4 3.6-4V7z"/></svg><span>Quote</span></div>
+    </div>
+  </section>
+
+  <!-- ══ BUTTONS ══ -->
+  <section id="buttons" class="ds-sec">
+    <h2 class="ds-sec-title">Buttons</h2>
+    <p class="ds-sec-desc">All buttons use <code>border-radius: pill</code> (999px). Three variants: <strong>Primary</strong> (gold, main CTA), <strong>Dark</strong> (plum bg + gold text, secondary on light), <strong>Ghost-Light</strong> (transparent + cream border, for dark sections). Three sizes.</p>
+
+    <div class="preview">
+      <div class="ds-label" style="margin-top:0">On Cream Background</div>
+      <div class="btn-row">
+        <a class="btn btn--primary btn--sm" href="#">Book a Call</a>
+        <a class="btn btn--primary" href="#">Book a Clarity Call <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="btn btn--primary btn--lg" href="#">Book a Clarity Call <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="btn btn--dark" href="#">Book a Clarity Call</a>
+      </div>
+    </div>
+    <div class="preview-dark">
+      <div class="ds-label" style="margin-top:0;color:rgba(251,246,238,.4)">On Dark Background</div>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#">Book a Clarity Call</a>
+        <a class="btn btn--ghost-light" href="#">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BADGES ══ -->
+  <section id="badges" class="ds-sec">
+    <h2 class="ds-sec-title">Badges &amp; Pills</h2>
+    <p class="ds-sec-desc">The hero badge uses frosted glass (white at 70% + backdrop-blur). The gold dot has a glowing pulse animation. The nav CTA is a gold-filled pill.</p>
+
+    <div class="preview" style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <div>
+        <div class="ds-label" style="margin-top:0;margin-bottom:10px">Hero Badge</div>
+        <div class="hero-badge-d"><span class="badge-dot"></span>Now accepting 1:1 clients</div>
+      </div>
+      <div>
+        <div class="ds-label" style="margin-top:0;margin-bottom:10px">Nav CTA Pill</div>
+        <a class="nav-cta-d" href="#">Book&nbsp;a&nbsp;call</a>
+      </div>
+      <div>
+        <div class="ds-label" style="margin-top:0;margin-bottom:10px">Credential Dot</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--ink-900)"><span class="cred-dot-d"></span>Gold 6px dot</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FORMS ══ -->
+  <section id="forms" class="ds-sec">
+    <h2 class="ds-sec-title">Form Fields</h2>
+    <p class="ds-sec-desc">Inputs sit on cream-50 with a subtle border. Focus state: gold-500 border + 3px gold ring at 15% opacity. The contact card wraps in a gradient mask-border (gold → transparent → rose).</p>
+
+    <div class="contact-card-d" style="max-width:460px">
+      <div class="field-d"><label>Your Name</label><input type="text" placeholder="Helena Menadue"></div>
+      <div class="field-d"><label>Email Address</label><input type="email" placeholder="hello@luminouslife.co"></div>
+      <div class="field-d"><label>What brings you here?</label><textarea rows="3" placeholder="Tell me what's been weighing on you..."></textarea></div>
+      <a class="btn btn--primary btn--lg" href="#" style="width:100%;justify-content:center">Book My Free Call</a>
+      <p style="text-align:center;font-size:12px;color:var(--ink-500);margin-top:10px;letter-spacing:.04em">Free · 30 minutes · No obligation</p>
+    </div>
+  </section>
+
+  <!-- ══ NAV ══ -->
+  <section id="nav" class="ds-sec">
+    <h2 class="ds-sec-title">Navigation</h2>
+    <p class="ds-sec-desc">Fixed floating pill at top-center. Background: plum-900 at 85% + <code>backdrop-filter: blur(16px)</code>. Gold-accent border at 15% opacity. CTA gold pill on right.</p>
+    <div class="preview-cream">
+      <div class="nav-demo">
+        <div class="nav-logo-d">Luminous <em>Life</em></div>
+        <ul class="nav-links-d">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Approach</a></li>
+          <li><a href="#">Journey</a></li>
+          <li><a href="#">Stories</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+        <a class="nav-cta-d" href="#">Book&nbsp;a&nbsp;call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION HEADERS ══ -->
+  <section id="sections" class="ds-sec">
+    <h2 class="ds-sec-title">Section Headers</h2>
+    <p class="ds-sec-desc">Three-part hierarchy: eyebrow → display title → lead body. Italic <code>&lt;em&gt;</code> spans use a gold-to-rose gradient text clip. On dark sections, headings become gold-400.</p>
+
+    <div class="preview">
+      <div class="eyebrow-d" style="margin-bottom:12px">If You're Here, You Already Know</div>
+      <div class="sec-title-d" style="font-size:38px;margin-bottom:14px">You've been telling yourself<br><em>it wasn't that bad.</em></div>
+      <div style="font-size:18px;color:var(--ink-700);max-width:500px;line-height:1.6">To everyone else, you're the woman who has it together. The strong one. But in the quiet moments, you know how much of you didn't make it out.</div>
+    </div>
+
+    <div class="preview-dark" style="margin-top:14px">
+      <div class="eyebrow-d on-dark" style="margin-bottom:12px">The Approach</div>
+      <div style="font-family:var(--font-display);font-size:36px;font-weight:500;letter-spacing:-.02em;line-height:1.1;color:var(--gold-400);margin-bottom:12px">We don't just talk. <em style="font-style:italic">We rewire.</em></div>
+      <div style="font-size:16px;color:rgba(251,246,238,.8);max-width:500px;line-height:1.6">Talk therapy gives you insight. But insight doesn't stop you from going back. The patterns aren't in your thinking mind. They're in your nervous system. That's where we work.</div>
+    </div>
+  </section>
+
+  <!-- ══ CARDS ══ -->
+  <section id="cards" class="ds-sec">
+    <h2 class="ds-sec-title">Cards</h2>
+    <p class="ds-sec-desc">Three card types: <strong>Pillar</strong> (icon + title + body, hover lift with shadow-md), <strong>Quote</strong> (pullquote with shadow-lg, used floating over portrait), <strong>Callout</strong> (full gold gradient, key message).</p>
+
+    <div class="ds-label">Pillar Cards</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px">
+      <div class="pillar-d">
+        <div class="pillar-icon-d"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6c0-2.5-2-4.6-4.5-4.6-1.7 0-3.2 1-4 2.4-.8-1.4-2.3-2.4-4-2.4-2.5 0-4.5 2.1-4.5 4.6 0 6 8.5 11 8.5 11s8.5-5 8.5-11z"/></svg></div>
+        <h3>Heal the Root</h3>
+        <p>We use hypnotherapy and nervous system work to clear trauma at its source.</p>
+      </div>
+      <div class="pillar-d">
+        <div class="pillar-icon-d"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></div>
+        <h3>Rediscover Yourself</h3>
+        <p>Stop second-guessing every feeling. Come back to a version of you that knows what's real.</p>
+      </div>
+      <div class="pillar-d">
+        <div class="pillar-icon-d"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5c0-3 1.5-5 3.5-5s3 1.5 2.5 3.5-2 3-3.5 2.5"/><path d="M12 14.5c0 3 1.5 5 3.5 5s3-1.5 2.5-3.5-2-3-3.5-2.5"/><path d="M12 9.5c0-3-1.5-5-3.5-5s-3 1.5-2.5 3.5 2 3 3.5 2.5"/><path d="M12 14.5c0 3-1.5 5-3.5 5s-3-1.5-2.5-3.5 2-3 3.5-2.5"/></svg></div>
+        <h3>Break the Pattern</h3>
+        <p>No more falling for the same person in different clothes. No more losing yourself.</p>
+      </div>
+    </div>
+
+    <div class="ds-label">Quote Card</div>
+    <div style="margin-bottom:28px">
+      <div class="quote-card-d">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="var(--gold-500)"><path d="M9.6 7C5.5 7 3 10.5 3 14.5V20h6v-7H6c0-2.5 1.4-4 3.6-4V7zm10 0c-4.1 0-6.6 3.5-6.6 7.5V20h6v-7h-3c0-2.5 1.4-4 3.6-4V7z"/></svg>
+        <p>"You don't need to become a new woman. Come home to the one you've been hiding."</p>
+      </div>
+    </div>
+
+    <div class="ds-label">Callout Box</div>
+    <div class="callout-d">None of this is who you are. It's what was done to you. And it can be undone.</div>
+  </section>
+
+  <!-- ══ LISTS ══ -->
+  <section id="lists" class="ds-sec">
+    <h2 class="ds-sec-title">Lists</h2>
+    <p class="ds-sec-desc">Three patterns: <strong>Promise List</strong> (icon circle + statement), <strong>Credentials</strong> (gold dot + text, sandwiched in border rules), <strong>Compare</strong> (two-col gain/release with colour-coded borders and badges).</p>
+
+    <div class="two-col" style="margin-bottom:32px">
+      <div>
+        <div class="ds-label" style="margin-top:0">Promise List</div>
+        <ul class="promise-d">
+          <li><span class="promise-icon-d">✦</span>You shame yourself for being 'too sensitive'</li>
+          <li><span class="promise-icon-d">☾</span>You keep wondering if you were the problem</li>
+          <li><span class="promise-icon-d">❀</span>You keep ending up in the same place</li>
+        </ul>
+      </div>
+      <div>
+        <div class="ds-label" style="margin-top:0">Credentials</div>
+        <ul class="creds-d">
+          <li><span class="cred-dot-d"></span>8 years coaching women through trauma</li>
+          <li><span class="cred-dot-d"></span>Certified in Hypnotherapy &amp; Neuroscience</li>
+          <li><span class="cred-dot-d"></span>Mother of four · Cancer survivor</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ds-label">Compare — Gain vs Release</div>
+    <div class="compare-d">
+      <div class="compare-col-d gain">
+        <div class="compare-header-d">
+          <div class="compare-badge-d gain"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"/></svg></div>
+          <h3>What You'll Gain</h3>
+          <p>The woman underneath all of it</p>
+        </div>
+        <div class="compare-item-d"><div class="ci-icon gain"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"/></svg></div><div><h4>A Reclaimed Sense of Self</h4><p>Wake up knowing who you are — clear on your values and what you want.</p></div></div>
+        <div class="compare-item-d"><div class="ci-icon gain"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12 10 18 20 6"/></svg></div><div><h4>Healthy, Honest Relationships</h4><p>Set boundaries that come from self-respect, not fear.</p></div></div>
+      </div>
+      <div class="compare-col-d remove">
+        <div class="compare-header-d">
+          <div class="compare-badge-d remove"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+          <h3>What You'll Release</h3>
+          <p>What was never yours to hold</p>
+        </div>
+        <div class="compare-item-d"><div class="ci-icon remove"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div><div><h4>The Weight of Toxic Patterns</h4><p>Release what tethered you to people that made you smaller.</p></div></div>
+        <div class="compare-item-d"><div class="ci-icon remove"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div><div><h4>Constant Self-Doubt</h4><p>Quiet the voice that tells you you're too much. It's lying.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══ -->
+  <section id="faq" class="ds-sec">
+    <h2 class="ds-sec-title">FAQ Accordion</h2>
+    <p class="ds-sec-desc">Numbered accordion. Open state: gold-500 border, gold badge, chevron rotates 180°. Max-height transitions from 0 to 400px on open.</p>
+
+    <div class="faq-item-d open">
+      <div class="faq-q-d">
+        <div class="faq-num-d">01</div>
+        <div class="faq-q-txt" style="flex:1"><strong>What if I am still in the relationship?</strong><small>You don't need to have left</small></div>
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="var(--accent-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transform:rotate(180deg)"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="faq-a-d">You don't need to have left. Some of the most powerful work happens with women still inside it — getting clear, regulating their nervous systems, and making the decisions that are right for them, in their own time.</div>
+    </div>
+    <div class="faq-item-d">
+      <div class="faq-q-d">
+        <div class="faq-num-d">02</div>
+        <div class="faq-q-txt" style="flex:1"><strong>It has been years. Shouldn't I be over it?</strong><small>Trauma doesn't follow a timeline</small></div>
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="var(--ink-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY ══ -->
+  <section id="gallery" class="ds-sec">
+    <h2 class="ds-sec-title">Gallery Items</h2>
+    <p class="ds-sec-desc">3:4 portrait-ratio cards. Three gradient tones: rose, gold, plum — cycled across items. On hover: scale(1.02). Used as image placeholders in the Stories section.</p>
+    <div class="preview-dark">
+      <div class="gallery-d">
+        <div class="gitem g-rose"><span>Client Story</span></div>
+        <div class="gitem g-gold"><span>Client Story</span></div>
+        <div class="gitem g-plum"><span>Client Story</span></div>
+        <div class="gitem g-rose"><span>Client Story</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DARK SURFACE ══ -->
+  <section id="dark" class="ds-sec">
+    <h2 class="ds-sec-title">Dark Surface</h2>
+    <p class="ds-sec-desc">Used for Approach and Stories sections. Background: plum-900. Headings: gold-400. Body: cream-50 at 70–85% opacity. Ambient blobs: blurred radial gradients, pointer-events: none. Sections clip with angled polygon paths.</p>
+
+    <div class="preview-dark" style="padding:44px;border-radius:var(--radius-xl)">
+      <div style="text-align:center">
+        <div class="eyebrow-d on-dark" style="margin-bottom:14px">The Approach</div>
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:500;letter-spacing:-.02em;color:var(--gold-400);margin-bottom:14px">We don't just talk. <em style="font-style:italic">We rewire.</em></div>
+        <p style="color:rgba(251,246,238,.8);max-width:520px;margin:0 auto 28px;font-size:15px;line-height:1.65">Talk therapy gives you insight. But insight doesn't stop you from going back. The patterns live in your nervous system. That's where we work.</p>
+        <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px">
+          <div class="principle-d"><div class="principle-icon-d"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6c0-2.5-2-4.6-4.5-4.6-1.7 0-3.2 1-4 2.4-.8-1.4-2.3-2.4-4-2.4-2.5 0-4.5 2.1-4.5 4.6 0 6 8.5 11 8.5 11s8.5-5 8.5-11z"/></svg></div><div class="principle-label-d">Hypno&shy;therapy</div></div>
+          <div class="principle-d"><div class="principle-icon-d"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></div><div class="principle-label-d">Neuro&shy;science</div></div>
+          <div class="principle-d"><div class="principle-icon-d"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div><div class="principle-label-d">Nervous System</div></div>
+          <div class="principle-d"><div class="principle-icon-d"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 9-9h6v6c0 5-4 9-9 9z"/><path d="M4 20c4-3 6-7 8-12"/></svg></div><div class="principle-label-d">Energy Healing</div></div>
+          <div class="principle-d"><div class="principle-icon-d"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5c0-3 1.5-5 3.5-5s3 1.5 2.5 3.5-2 3-3.5 2.5"/><path d="M12 14.5c0 3 1.5 5 3.5 5s3-1.5 2.5-3.5-2-3-3.5-2.5"/><path d="M12 9.5c0-3-1.5-5-3.5-5s-3 1.5-2.5 3.5 2 3 3.5 2.5"/><path d="M12 14.5c0 3-1.5 5-3.5 5s-3-1.5-2.5-3.5 2-3 3.5-2.5"/></svg></div><div class="principle-label-d">Embodi&shy;ment</div></div>
+        </div>
+        <a class="btn btn--primary" href="#">Book a Clarity Call</a>
+      </div>
+    </div>
+
+    <div class="ds-label" style="margin-top:24px">Angled section clip-paths</div>
+    <div class="code-block">
+.angled-top    { clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%); }<br>
+.angled-bottom { clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%); }<br>
+.angled-both   { clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%); }
+    </div>
+
+    <div class="ds-label" style="margin-top:20px">Ambient blob helper</div>
+    <div class="code-block">
+.blob {<br>
+&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;border-radius: 50%;<br>
+&nbsp;&nbsp;filter: blur(80px);<br>
+&nbsp;&nbsp;opacity: 0.4;<br>
+&nbsp;&nbsp;pointer-events: none;<br>
+}
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

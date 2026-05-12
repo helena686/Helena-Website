@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { PopupModal } from 'react-calendly';
+import { useRouter } from 'next/navigation';
+import { PopupModal, useCalendlyEventListener } from 'react-calendly';
 import type { ReactNode, CSSProperties } from 'react';
 
 const CALENDLY_URL =
@@ -16,10 +17,19 @@ interface Props {
 export default function CalendlyButton({ children, className, style }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // When the booking is confirmed, close the popup and go to the thank-you page
+  useCalendlyEventListener({
+    onEventScheduled: () => {
+      setIsOpen(false);
+      router.push('/thank-you');
+    },
+  });
 
   return (
     <>
