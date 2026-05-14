@@ -190,25 +190,17 @@ function Hero() {
           Your call details are in your inbox. Watch the short message below before we meet.
         </p>
 
-        {/* Video placeholder */}
-        <div className="overflow-hidden rounded-2xl bg-[#2c1a32] ring-1 ring-[rgba(232,184,106,0.14)] shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
-          <div className="flex aspect-video items-center justify-center">
-            <div className="flex flex-col items-center gap-5">
-              <div className="relative flex items-center justify-center">
-                <span className="absolute h-24 w-24 animate-ping rounded-full bg-[#d4a04a] opacity-10" />
-                <button
-                  type="button"
-                  aria-label="Play video message from Helena"
-                  className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[#d4a04a] pl-1 shadow-[0_0_0_1px_rgba(212,160,74,0.4),0_12px_40px_rgba(212,160,74,0.25)] transition-all duration-200 hover:scale-105 hover:bg-[#e8b86a]"
-                >
-                  <svg viewBox="0 0 24 24" width="26" height="26" fill="#1f1322"><path d="M8 5v14l11-7z" /></svg>
-                </button>
-              </div>
-              <p className="font-body text-[12px] font-medium uppercase tracking-[0.14em] text-[rgba(251,246,238,0.35)]">
-                A message from Helena
-              </p>
-            </div>
-          </div>
+        {/* Helena's video message — portrait (9:16), capped at 350px on desktop */}
+        <div className="w-full aspect-[9/16] max-w-[350px] mx-auto rounded-2xl overflow-hidden shadow-2xl">
+          <iframe
+            src="https://player.vimeo.com/video/1192207643?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            title="A message from Helena"
+          />
         </div>
       </div>
     </section>
