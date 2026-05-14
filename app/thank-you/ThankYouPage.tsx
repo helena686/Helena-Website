@@ -161,6 +161,8 @@ function Nav() {
 // ─── HERO ────────────────────────────────────────────────────────────────────
 
 function Hero() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <section className="relative overflow-hidden bg-[#1f1322] px-6 pt-36 pb-20 md:pt-44 md:pb-28">
       {/* Ambient blobs */}
@@ -190,17 +192,32 @@ function Hero() {
           Your call details are in your inbox. Watch the short message below before we meet.
         </p>
 
-        {/* Helena's video message — portrait (9:16), capped at 350px on desktop */}
-        <div className="w-full aspect-[9/16] max-w-[350px] mx-auto rounded-2xl overflow-hidden shadow-2xl">
-          <iframe
-            src="https://player.vimeo.com/video/1192207643?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            title="A message from Helena"
-          />
+        {/* Helena's video message */}
+        <div className="relative w-full aspect-[9/16] md:aspect-video md:max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl bg-black flex items-center justify-center">
+
+          {!isPlaying ? (
+            /* ── Facade: golden play button ── */
+            <div
+              className="cursor-pointer group w-full h-full flex items-center justify-center"
+              onClick={() => setIsPlaying(true)}
+            >
+              <div className="w-20 h-20 rounded-full bg-[#D6B052] flex items-center justify-center shadow-[0_8px_32px_rgba(214,176,82,0.45)] group-hover:scale-110 transition-transform duration-200">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="white">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          ) : (
+            /* ── Live Vimeo iframe ── */
+            <iframe
+              className="w-full h-full"
+              src="https://player.vimeo.com/video/1192207643?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1"
+              style={{ border: 0 }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title="A message from Helena"
+            />
+          )}
         </div>
       </div>
     </section>
